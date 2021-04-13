@@ -1,0 +1,234 @@
+<div id="profile-edit" class="container">
+    <div class="row  justify-content-center">
+        <form [formGroup]="myForm" *ngIf="!isFetching && !isError" enctype="multipart/form-data" method="POST">
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <img [src]="profImage">
+                    <label for="img">
+                        <i class="fas fa-2x fa-camera-retro"></i>
+                    </label>
+                    <input type="file" id="img" (change)="onUpload($event)">
+                    <div class="lds-ellipsis" *ngIf="isFetchingImg"><div></div><div></div><div></div><div></div></div>
+                </div>
+                <!-- first name -->
+                <div class="col-md-5 mb-3">
+                    <label for="firstname">First name</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control"
+                            *ngIf="myForm.controls.firstname.errors else correctFirstName" appValidationError
+                            id="firstname" placeholder="First name" name="firstname" formControlName="firstname"
+                            required>
+                        <ng-template #correctFirstName>
+                            <input type="text" class="form-control" appValidationCorrect id="firtname"
+                                placeholder="First name" name="firstname" formControlName="firstname" required>
+                        </ng-template>
+                        <div *ngIf="myForm.controls.firstname.errors && myForm.controls.firstname.touched" class="error text-danger">
+                            <p *ngIf="myForm.controls.firstname.errors.required">Name is Required</p>
+                            <p *ngIf="myForm.controls.firstname.errors.maxlength">Name must be less than 8 characters
+                            </p>
+                            <p *ngIf="myForm.controls.firstname.errors.pattern">Name must be characters only</p>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- last name -->
+                <div class="col-md-5 mb-3 offset-md-1">
+                    <label for="lastname">Last name</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="lastname">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" *ngIf="myForm.controls.lastname.errors else correctln"
+                            appValidationError id="lastname" placeholder="Last name" name="lastname"
+                            formControlName="lastname" required>
+                        <ng-template #correctln>
+
+                            <input type="text" class="form-control" appValidationCorrect id="lastname"
+                                placeholder="Last name" name="lastName" formControlName="lastname" required>
+                        </ng-template>
+                        <div *ngIf="myForm.controls.lastname.errors" class="error text-danger">
+                            <p *ngIf="myForm.controls.lastname.errors.required">Name is Required</p>
+                            <p *ngIf="myForm.controls.lastname.errors.maxlength">Name must be less than 8 characters</p>
+                            <p *ngIf="myForm.controls.lastname.errors.pattern">Name must be characters only</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- email -->
+                <div class="col-md-5 mb-3">
+                    <label for="email">Email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="email">
+                                <i class="fas fa-at"></i>
+                            </span>
+                        </div>
+                        <input type="email" class="form-control" *ngIf="myForm.controls.email.errors else correctemail"
+                            appValidationError id="email" placeholder="email" name="email" formControlName="email"
+                            required>
+                        <ng-template #correctemail>
+                            <input type="email" class="form-control" appValidationCorrect id="email" placeholder="email"
+                                name="email" formControlName="email" required>
+                        </ng-template>
+                        <div *ngIf="myForm.controls.email.errors" class="error text-danger">
+                            <p *ngIf="myForm.controls.email.errors.required">email is Required</p>
+                            <p *ngIf="myForm.controls.email.errors.pattern">invalid email</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- phone -->
+                <div class="col-md-5 offset-md-1 mb-3">
+                    <label for="phone">Phone Number</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="username">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" *ngIf="myForm.controls.phone.errors else correctphone"
+                            appValidationError id="phone" placeholder="phone" name="phone" formControlName="phone"
+                            required>
+                        <ng-template #correctphone>
+                            <input type="text" class="form-control" appValidationCorrect id="phone" placeholder="phone"
+                                name="phone" formControlName="phone" required>
+                        </ng-template>
+                        <div *ngIf="myForm.controls.phone.errors" class="error text-danger">
+                            <p *ngIf="myForm.controls.phone.errors.required">phone is Required</p>
+                            <p *ngIf="myForm.controls.phone.errors.pattern">phone must be numbers only</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- gender -->
+                <div class="col-md-5  mb-3">
+                    <label for="gender">Gender</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="gender">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                        <select class="form-control" appValidationCorrect (change)="onChange($event.target.value)">
+                            <option selected>{{myForm.value.gender}}</option>
+                            <option *ngFor="let element of gender" value="{{element}}">{{element}}</option>
+                        </select>
+                        <div *ngIf="myForm.controls.gender.errors" class="error text-danger">
+                            <p *ngIf="myForm.controls.gender.errors.required">Gender is Required</p>
+                            <p *ngIf="myForm.controls.gender.errors.maxlength">Gender must be characters only</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- password -->
+                <div class="col-md-5 mb-3 offset-md-1">
+                    <label for="password">Verify Password</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-key"></i>
+                            </span>
+                        </div>
+                        <input type="password" class="form-control"
+                            *ngIf="myForm.controls.password.errors else correctpassword" appValidationError
+                            id="password" placeholder="password" name="password" formControlName="password" required>
+                        <ng-template #correctpassword>
+                            <input type="password" class="form-control" appValidationCorrect id="password"
+                                placeholder="password" name="password" formControlName="password" required>
+                        </ng-template>
+                        <div *ngIf="myForm.controls.password.errors" class="error text-danger">
+                            <p *ngIf="myForm.controls.password.errors.required">password is Required</p>
+                            <div *ngIf="passwordErr=='show'">
+                                <p [class]="passwordErr">invalid password</p>
+                            </div>
+                            <!-- <div *ngIf="!error">
+                                <p>invalid</p>
+                            </div> -->
+                            <!-- <p [innerHtml]="htmlToAdd"></p> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- country -->
+                <div class="col-md-5 mb-3">
+                    <label for="city">Country</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="country">
+                                <i class="fas fa-city"></i>
+                            </span>
+                        </div>
+                        <input type="country" class="form-control"
+                            *ngIf="myForm.controls.country.errors else correctcountry" appValidationError id="country"
+                            placeholder="country" name="country" formControlName="country" required>
+                        <ng-template #correctcountry>
+                            <input type="text" class="form-control" appValidationCorrect id="country"
+                                placeholder="country" name="country" formControlName="country" required>
+                        </ng-template>
+                        <div *ngIf="myForm.controls.country.errors" class="error text-danger">
+                            <p *ngIf="myForm.controls.country.errors.required">country is Required</p>
+                            <p *ngIf="myForm.controls.country.errors.city">country must be characters only</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- city -->
+                <div class="col-md-5 offset-md-1 mb-3">
+                    <label for="city">City</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-city"></i>
+                            </span>
+                        </div>
+                        <input type="city" class="form-control" *ngIf="myForm.controls.city.errors else correctcity"
+                            appValidationError id="city" placeholder="city" name="city" formControlName="city" required>
+                        <ng-template #correctcity>
+                            <input type="text" class="form-control" appValidationCorrect id="city" placeholder="city"
+                                name="city" formControlName="city" required>
+                        </ng-template>
+                        <div *ngIf="myForm.controls.city.errors" class="error text-danger">
+                            <p *ngIf="myForm.controls.city.errors.required">country is Required</p>
+                            <p *ngIf="myForm.controls.city.errors.pattern">city must be characters only</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- street -->
+                <div class="col-md-5 mb-3">
+                    <label for="street">Street</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-city"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" *ngIf="myForm.controls.street.errors else correctstreet"
+                            appValidationError id="street" placeholder="street" name="street" formControlName="street"
+                            required>
+                        <ng-template #correctstreet>
+                            <input type="text" class="form-control" appValidationCorrect id="street"
+                                placeholder="street" name="street" formControlName="street" required>
+                        </ng-template>
+                        <div *ngIf="myForm.controls.street.errors" class="error text-danger">
+                            <p *ngIf="myForm.controls.street.errors.required">street is Required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn rounded-0" id="editProfileBtn" type="submit" (click)="saveChanges()"><i
+                    class="fas fa-save"></i> Save
+                Changes</button>
+            <button class="btn rounded-0" id="deleteProfileBtn" type="submit" (click)="deleteAccount()"><i
+                    class="far fa-trash-alt"></i> Delete Account
+            </button>
+        </form>
+        <div *ngIf="isFetching && !isError">
+            <mat-spinner class="loading"></mat-spinner>
+        </div>
+        <div *ngIf="!isFetching && isError">
+            <div class="text-danger alert-danger error"><i class="fas fa-exclamation-triangle text-danger"></i> Something Went Wrong</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "menna",
+      "lastName": "omar",
+      "username": "menna_omar",
+      "email": "menna@gmail.com",
+      "password": 12345678910,
+      "phone": "01211883346",
+      "country": "egypt",
+      "city": "posrtsaid",
+      "street": "portfouad"
+    },
+    {
+      "id": 2,
+      "firstName": "menna2",
+      "lastName": "omar2",
+      "username": "menna_omar2",
+      "email": "menna2@gmail.com",
+      "password": 456,
+      "phone": "01211883346",
+      "country": "egypt",
+      "city": "posrtsaid",
+      "street": "portfouad"
+    },
+    {
+      "id": 3,
+      "firstName": "menna3",
+      "lastName": "omar3",
+      "username": "menna_omar3",
+      "email": "menna3@gmail.com",
+      "password": 789,
+      "phone": "01211883346",
+      "country": "egypt",
+      "city": "posrtsaid",
+      "street": "portfouad"
+    }
+  ]
+}

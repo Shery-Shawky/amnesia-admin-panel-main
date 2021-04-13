@@ -1,0 +1,42 @@
+<section id="orders">
+    <h1>Client order list</h1>
+    <h3>User email address:  (<b><i>{{user?.email}}</i></b>)</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-10">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order Number</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="!isFetching">
+                        <tr *ngFor="let order of orders; index as i" id="numRows">
+                            <th>{{order._id}}</th>
+                            <td>{{order.createdAt}}</td>
+                            <td>{{order.orderStatus}}</td>
+                            <td>{{order.totalPrice || 0}}</td>
+                            <td>
+                                <button class="btn rounded-0" id="viewDetails"
+                                    (click)="orderDetails(order._id)">Details</button>
+                                <!-- <button class="btn rounded-0" id="viewDetails" [routerLink]="['/profileOrderDetails']">Details</button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center" *ngIf="orders.length==0 && !isFetching">
+                    <h3>Empty: no orders</h3>
+                </div>
+                <div  *ngIf="isFetching">
+                    <mat-spinner class="loading"></mat-spinner>
+                    <!-- <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

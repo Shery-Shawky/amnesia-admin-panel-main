@@ -1,0 +1,85 @@
+<section id="orders">
+  <h1>Clients' Orders</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-10">
+        <div class="btns">
+          <button class="btn rounded-0" id="acceptbtn" type="submit" (click)="changeStatus('accepted')"><i
+              class="fas fa-check"></i> Accepted</button>
+          <button class="btn rounded-0" id="penddingbtn" type="submit" (click)="changeStatus('pending')"><i
+              class="far fa-clock"></i> Pendding</button>
+          <button class="btn rounded-0" id="rejectbtn" type="submit" (click)="changeStatus('canceled')"><i
+              class="fas fa-times"></i> Rejected</button>
+        </div>
+        <div class="headers" *ngIf="!showOrders">
+          <h2 id="status">Choose Status Of Orders <i class="fas fa-meh-rolling-eyes"></i></h2>
+        </div>
+        <!-- table -->
+        <div *ngIf="!isFetching">
+
+          <table class="table table-striped m-auto table-resposive" *ngIf="showOrders" id="penddingTable">
+            <thead>
+              <tr>
+                <th scope="col">Order Number</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Date</th>
+                <th scope="col">Total</th>
+                <th scope="col">Status</th>
+                <th scope="col">Details</th>
+                <th scope="col" *ngIf="status=='pending'">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="{{order._id}}" *ngFor="let order of allData">
+                <td>{{order._id}}</td>
+                <td>{{order.userId?.firstname || "N/A"}} {{order.userId?.lastname || "N/A"}}</td>
+                <td>{{order.userId?.email || "N/A"}}</td>
+                <td>{{order?.createdAt}}</td>
+                <td>$ {{order?.totalPrice}}</td>
+                <td *ngIf="order.orderStatus=='pending'" style="color:#E0A800"><span>Pending</span></td>
+                <td *ngIf="order.orderStatus=='accepted'" style="color:#3A9D5D"><span>Accepted</span></td>
+                <td *ngIf="order.orderStatus=='canceled'" style="color:#F63C3A"><span>Rejected</span></td>
+
+                <td> <a (click)="orderDetails(order._id)"><i class="fas fa-info-circle"></i> More Details</a></td>
+                <td *ngIf="status=='pending'">
+                  <i class="fas fa-check ch" (click)="updateProductStatus(order._id,'accepted')"> Accept</i>
+                  <i class="fas fa-times" (click)="updateProductStatus(order._id,'canceled')"> Reject</i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div *ngIf="allData.length==0 && showOrders" class="text-center mt-2"> No orders found</div>
+
+
+          <!-- pagination -->
+          <div class="pagination">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li class="page-item" *ngFor="let item of arrnoOfPages"><a class="page-link"
+                    (click)="paginate(item)">{{item}}</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div *ngIf="isFetching">
+          <mat-spinner class="loading"></mat-spinner>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>

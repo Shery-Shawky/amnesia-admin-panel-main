@@ -1,0 +1,19 @@
+{
+  "or": {"orderId": 1,
+  "products": [
+    {
+      "productid": 1,
+      "name": "p1"
+    },
+    {
+      "productid": 2,
+      "name": "p2"
+    },
+    {
+      "productid": 3,
+      "name": "p3"
+    }
+  ],
+  "notes": "aa",
+  "addresses": "egypt, portsaid, pf"}
+}

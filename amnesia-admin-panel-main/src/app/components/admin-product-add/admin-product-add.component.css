@@ -1,0 +1,54 @@
+/* #addProduct{
+  background-image: url('../../../assets/images/billbg.jpg');
+  background-size: cover;
+} */
+#addProduct .wrapper{
+  /* background-color: black;
+  opacity: .6; */
+  padding: 30px;
+}
+#addProduct .form-control{
+  background-color: transparent;
+  /* color: white; */
+  color: #1d1d1d;
+  border: none;
+  border-bottom: 1px solid;
+  border-radius: 0px;
+}
+#addProduct label{
+  font-size: 1rem;
+  color: #1d1d1d;
+  /* color: #FFFFFF; */
+}
+#addProduct input:focus,
+#addProduct textarea:focus,
+#addProduct select:focus{
+  box-shadow: none;
+}
+#addProduct .btn{
+    outline: none;
+    -webkit-background-clip: text,padding-box;
+    background-clip: text,padding-box;
+    -webkit-text-fill-color: transparent;
+    background-size: 100% 200%;
+    background-position: top;
+    transition: background-position 0.5s ease-in-out;
+    box-shadow: none;
+    margin-right: 10px;
+}
+#addProduct .btn#add{
+  border: 1px solid #3A9D5D;
+  background-image: 
+    linear-gradient(to top, hsl(0, 0%, 100%) 50%, #3A9D5D 50%),
+    linear-gradient(to top, #3A9D5D 50%, transparent 50%);
+}
+#addProduct .btn#cancel{
+  border: 1px solid #F63C3A;
+  background-image: 
+    linear-gradient(to top, hsl(0, 0%, 100%) 50%, #F63C3A 50%),
+    linear-gradient(to top, #F63C3A 50%, transparent 50%);
+}
+
+#addProduct .btn:hover{
+  background-position: bottom;
+}

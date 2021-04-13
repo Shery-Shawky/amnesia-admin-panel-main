@@ -1,0 +1,28 @@
+#orderDetails .table.tbOrder td,
+#orderDetails .table.tbClient td{
+    border: none;
+    vertical-align: unset;
+}
+#orderDetails table thead{
+    background-color: #F65B5F;
+    color: #FFFFFF;
+    box-shadow: 5px 5px 5px #95959595;
+}
+#orderDetails h3{
+    color: #F65B5F;
+    font-size: 1.3rem;
+}
+#orderDetails table td:first-child{
+    font-weight: bold;
+}
+#orderDetails h4,#orderDetails h2{
+    color: #F65B5F;
+}
+#orderDetails h4 span{
+    color: black;
+}
+
+#orderDetails img{
+    width: 50px;
+    height: 50px;
+}

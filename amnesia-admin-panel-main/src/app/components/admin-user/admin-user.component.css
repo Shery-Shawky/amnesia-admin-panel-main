@@ -1,0 +1,76 @@
+#users .searchwrapper{
+    justify-content: center;
+    margin-bottom: 30px;
+}
+#users .search{
+    outline: none;
+    display: block;
+    width: 30%;
+    height: 30px;
+    border-radius: 50px;
+    border: 1px solid;
+}
+#users input[type="text"]::placeholder{
+    padding: 10px;
+    color: #F65B5F;
+}
+#users input[type="text"]{
+    padding: 15px 10px;
+    color: #F65B5F;
+}
+#users .conusers{
+    display: flex;
+    justify-content: center;
+}
+#users .card{
+    margin: 10px;
+    border: 1px solid #C7C7C7;
+    background-color: #f8f6f6;
+    border-radius: 40% 0%;
+    box-shadow: 5px 5px 10px #C7C7C7;
+}
+#users .card img{
+    width: 100px;
+    height: 100px;
+    margin: 5px auto;
+    border-radius: 50%;
+    border: 3px double #F65B5F;
+}
+#users .card h3{
+    text-align: center;
+   color: #F65B5F;
+}
+#users .card-text{
+    border-top: 1px solid gray;
+    padding-top: 10px;
+}
+#users .icons{
+    text-align: center;
+    border-top: 1px solid gray;
+    padding-top: 10px;
+}
+#users .card i{
+    width: 40px;
+    padding: 10px;
+    margin: 0px 10px;
+    border-radius: 50%;
+    border: 3px double #F65B5F;
+    color: #F65B5F;
+    cursor: pointer;
+    /* background-color: thistle; */
+}
+#users .card i:hover{
+    background-color: #F65B5F;
+    border: 3px double #FFFFFF;
+    color: #FFFFFF;
+    transition: all 0.8s ease-in-out;
+}
+
+#users .pagination{
+    justify-content: center;
+    margin-top: 20px;
+}
+#users .page-link{
+    color: #F65B5F;
+    border: 1px solid #c7c7c7;
+}

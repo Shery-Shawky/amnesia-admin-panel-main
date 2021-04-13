@@ -1,0 +1,68 @@
+#products .searchwrapper{
+    justify-content: center;
+    margin-bottom: 30px;
+}
+#products .search{
+    outline: none;
+    display: block;
+    width: 30%;
+    height: 30px;
+    border-radius: 50px;
+    border: 1px solid;
+}
+#products input[type="text"]::placeholder{
+    padding: 10px;
+    color: #F65B5F;
+}
+#products input[type="text"]{
+    padding: 15px 10px;
+    color: #F65B5F;
+}
+
+#products table thead{
+    text-align: center;
+    background-color: #F65B5F;
+    color: #FFFFFF;
+    box-shadow: 5px 5px 5px #95959595;
+}
+#products .table td{
+    vertical-align: middle;
+    text-align: center;
+}
+#products img{
+    width: 50px;
+    height: 50px;
+}
+#products #edit{
+    color: #1B8EB7;
+    margin-right: 15px;
+    cursor: pointer;
+}
+#products #delete{
+    color: #F63C3A;
+    cursor: pointer;
+}
+
+/* pagination */
+#products .pagination{
+    justify-content: center;
+    margin-top: 20px;
+}
+#products .page-link{
+    color: #F65B5F;
+    border: 1px solid #c7c7c7;
+}
+
+/*add*/
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+.mat-fab.mat-accent{
+    background-color: #fabc02;
+}
+
+#addingProduct,
+#editingProduct{
+    display: none;
+}

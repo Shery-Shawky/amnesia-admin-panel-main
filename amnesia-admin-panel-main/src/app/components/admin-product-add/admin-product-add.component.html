@@ -1,0 +1,60 @@
+<section id="addProduct">
+  <h1>Add New Product</h1>
+  <div class="wrapper">
+    <!-- <form> -->
+    <div *ngIf="!isFetching">
+      <div class="form-group row rounded-0">
+        <label for="img" class="col-sm-2 col-form-label">Image: </label>
+        <div class="col-sm-10">
+          <div class="text-danger" *ngIf="imageRequired">image is required</div>
+          <input type="file" class="form-control" #imageInput id="img">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">Name: </label>
+        <div class="col-sm-10">
+          <input type="text" [(ngModel)]="product.name" class="form-control" id="name" placeholder="Product Name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="description" class="col-sm-2 col-form-label">Description:</label>
+        <div class="col-sm-10">
+          <textarea name="" [(ngModel)]="product.description" class="form-control" id="Description" cols="10" rows="3"
+            placeholder="description"></textarea>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="oldPrice" class="col-sm-2 col-form-label">Old Price:</label>
+        <div class="col-sm-10">
+          <input type="number" [(ngModel)]="product.old_price" class="form-control" id="oldPrice"
+            placeholder="Old Price">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="newPrice" class="col-sm-2 col-form-label">New Price:</label>
+        <div class="col-sm-10">
+          <input type="number" [(ngModel)]="product.current_price" class="form-control" id="newPrice"
+            placeholder="New Price">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="status" class="col-sm-2 col-form-label">Status:</label>
+        <div class="col-sm-10">
+          <select name="" [(ngModel)]="product.status" class="form-control" id="status">
+            <option *ngFor="let c of status" [ngValue]="c">{{c}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-10">
+          <button type="submit" class="btn success rounded-0" id="add" (click)="add(imageInput)" 
+          [disabled]="(product.name?.length < 3) || (product.description?.length <= 0)"
+          >Add</button>
+          <button type="reset" class="btn danger rounded-0" id="cancel" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!-- </form> -->
+  </div>
+
+</section>

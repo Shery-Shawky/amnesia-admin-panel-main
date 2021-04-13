@@ -1,0 +1,177 @@
+/* material ui */
+.loading{
+    margin: 0 auto;
+}
+.mat-progress-spinner circle, .mat-spinner circle{
+    stroke: #F65B5F;
+}
+
+/* loading */
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #F65B5F;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+.lds-ellipsis[_ngcontent-gam-c50]{
+  display: block;
+  margin: 0 auto;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+/* CSS */
+#orders{
+  margin-top: 50px;
+}
+#orders .btns{
+  text-align: center;
+}
+#orders .headers{
+  text-align: center;
+  color: #F65B5F;
+  margin-top: 50px;
+}
+#orders h2{
+  font-size: 2.5rem;
+}
+#orders table thead{
+    background-color: #F65B5F;
+    color: #FFFFFF;
+    box-shadow: 5px 5px 5px #95959595;
+}
+#orders #acceptbtn,
+#orders #penddingbtn,
+#orders #rejectbtn{
+  background-color: #FFFFFF;
+  outline: none;
+  border: 1px solid #F65B5F;
+  background-image: 
+    linear-gradient(to top, hsl(0, 0%, 100%) 50%, #F65B5F 50%),
+    linear-gradient(to top, #F65B5F 50%, transparent 50%);
+  -webkit-background-clip: text,padding-box;
+  background-clip: text,padding-box;
+  -webkit-text-fill-color: transparent;
+  background-size: 100% 200%;
+  background-position: top;
+  transition: background-position 0.5s ease-in-out;
+  margin: 10px;
+  margin-bottom: 30px;
+  box-shadow: none;
+}
+#orders #acceptbtn{
+  border: 1px solid #3A9D5D;
+  background-image: 
+    linear-gradient(to top, hsl(0, 0%, 100%) 50%, #3A9D5D 50%),
+    linear-gradient(to top, #3A9D5D 50%, transparent 50%);
+}
+#orders #penddingbtn{
+  border: 1px solid #E0A800;
+  background-image: 
+    linear-gradient(to top, hsl(0, 0%, 100%) 50%, #E0A800 50%),
+    linear-gradient(to top, #E0A800 50%, transparent 50%);
+}
+#orders #rejectbtn{
+  border: 1px solid #F63C3A;
+  background-image: 
+    linear-gradient(to top, hsl(0, 0%, 100%) 50%, #F63C3A 50%),
+    linear-gradient(to top, #F63C3A 50%, transparent 50%);
+}
+#orders #acceptbtn:hover,
+#orders #penddingbtn:hover,
+#orders #rejectbtn:hover{
+  background-position: bottom;
+}
+
+
+#orders #acceptedTable,
+#orders #penddingTable,
+#orders #rejectedTable{
+  /* display: none; */
+  width: max-content;
+}
+#orders #acceptPagination,
+#orders #penddingPagination,
+#orders #rejectPagination{
+  /* display: none; */
+}
+table{
+  max-width: 75vw;
+}
+td{
+  max-width: 15vw;
+  text-overflow: ellipsis;
+}
+#orders a{
+  color: #1A92D3;
+  cursor: pointer;
+}
+#orders .fa-check.ch{
+  color: #3A9D5D;
+  margin-right: 15px;
+  cursor: pointer;
+}
+#orders .fa-times{
+  color: #F63C3A;
+  cursor: pointer;
+}
+
+#orders .pagination{
+  justify-content: center;
+  margin-top: 20px;
+}
+#orders .page-link{
+  color: #F65B5F;
+  border: 1px solid #c7c7c7;
+}
+
+#orders #orderDetails{
+  display: none;
+}

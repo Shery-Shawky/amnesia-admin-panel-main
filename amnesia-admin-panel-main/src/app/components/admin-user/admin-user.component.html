@@ -1,0 +1,60 @@
+<section id="users">
+    <h1>Our Clients:</h1>
+    <div class="container">
+        <div class="row searchwrapper">
+            <input type="text" name="" id="" [(ngModel)]="pname" class="search" (input)="searching()" placeholder="Search for name...">
+        </div>
+        <div *ngIf="!isFetching">
+            <div class="row conusers">
+
+                <div class="col-xs-3 lg-3" *ngFor="let user of allData">
+                    <div  class="card" style="width: 18rem;">
+                        <img class="card-img-top"
+                            src="https://amnesia-skincare.herokuapp.com/api/images/show/{{user.profileImage}}"
+                            alt="user image">
+                        <div class="card-body">
+                            <h3 class="card-title">{{user?.firstname}} {{user?.lastname}}</h3>
+                            <div class="card-text">
+                                <p>Gender: {{user?.gender}}</p>
+                                <p>Phone: {{user.phones || "N/A"}}</p>
+                                <p>Address: {{user.addresses || "N/A"}}</p>
+                            </div>
+                            <div class="icons">
+                                <i class="fas fa-shopping-cart" (click)="goToOrders(user._id)"></i>
+                                <!-- <i class="fas fa-trash" (click)="deleteUser(id)"></i> -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="pagination">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item" *ngFor="let item of arrnoOfPages"><a class="page-link"
+                                (click)="paginate(item)">{{item}}</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div *ngIf="isFetching" class="text-center">
+            <mat-spinner class="loading d-inline-block"></mat-spinner>
+        </div>
+    </div>
+</section>

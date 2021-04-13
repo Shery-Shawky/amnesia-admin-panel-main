@@ -1,0 +1,101 @@
+<section id="orderDetails">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div *ngIf="isFetching" class="text-center">
+                    <mat-spinner class="loading d-inline-block"></mat-spinner>
+                </div>
+            </div>
+            <div class="col-lg-12" *ngIf="!isFetching">
+                <div class="order">
+                    <h3>Order Information</h3>
+                    <div class="row">
+                        <div class="col-lg-6 offset-2">
+                            <table class="table tbOrder">
+                                <tbody>
+                                    <tr>
+                                        <td>Order Number:</td>
+                                        <td>{{orderInfo?._id}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status:</td>
+                                        <td>{{orderInfo?.orderStatus}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address:</td>
+                                        <td>{{orderInfo?.address}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Payment Method:</td>
+                                        <td>{{orderInfo?.paymentMethod}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="client">
+                    <h3>Client Information</h3>
+                    <div class="row">
+                        <div class="col-lg-6 offset-2">
+                            <table class="table tbClient">
+                                <tbody>
+                                    <tr>
+                                        <td>Full Name:</td>
+                                        <td>{{orderInfo?.userId?.firstname || "N/A"}} {{orderInfo?.userId?.lastname || "N/A"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email:</td>
+                                        <td>{{orderInfo?.userId?.email || "N/A"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address:</td>
+                                        <td>{{orderInfo?.userId?.address || "N/A"}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phone:</td>
+                                        <td>{{orderInfo?.userId?.phones || "N/A"}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="details">
+                    <h3>Order Details</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Image</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let product of orderInfo?.products">
+                                <td ><img src="https://amnesia-skincare.herokuapp.com/api/images/show/{{product.productId.image}}"></td>
+                                <td >{{product?.productId.name}}</td>
+                                <td >{{product?.quantity}}</td>
+                                <td >{{product?.productId?.current_price}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div *ngIf=" orderInfo?.products.length==0" class="text-center">
+                        No products found
+                    </div>
+                </div>
+                <hr>
+                <div class="totalPrice">
+                    <div class="row">
+                        <div class="col-lg-3 offset-10">
+                            <h2>Total Price: <span>{{totalPrice}}</span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,67 @@
+<section id="products">
+  <h1>Our Products</h1>
+  <div class="container">
+    <div class="row searchwrapper">
+      <input type="text" name="" id="" [(ngModel)]="pname" (input)="searching()" class="search" placeholder="Search for product name...">
+    </div>
+  </div>
+  <table class="table table-striped" id="acceptedTable">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Desription</th>
+        <th scope="col">Old Price</th>
+        <th scope="col">Current Price</th>
+        <th scope="col">Status</th>
+        <th scope="col">Rate</th>
+        <th scope="col">Reviews</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="!isFetching">
+      <tr id="{{product._id}}" *ngFor="let product of allData">
+        <td><img src="{{product.image}}"></td>
+        <td>{{product.name}}</td>
+        <td>{{product.description}}</td>
+        <td><b>$ {{product.old_price}}</b></td>
+        <td><b>$ {{product.current_price}}</b></td>
+        <td>{{product.status}}</td>
+        <td>{{product.rating}}/5</td>
+        <td>{{product.reviews.length}}</td>
+        <td>
+          <i class="far fa-edit" id="edit" (click)="edit(product._id)"> Edit</i>
+          <i class="far fa-trash-alt" id="delete" (click)="delete(product._id)"> Delete</i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="allData.length==0 && !isFetching" class="text-center">
+    No products found
+  </div>
+  <div class="pagination" *ngIf="!isFetching">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item" *ngFor="let item of arrnoOfPages"><a class="page-link"
+            (click)="paginate(item)">{{item}}</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div *ngIf="isFetching" class="text-center">
+    <mat-spinner class="loading d-inline-block"></mat-spinner>
+  </div>
+  <button mat-fab id="addingProductBtn" color="warn" (click)="add()"><i class="fas fa-plus fa-2x"></i></button>
+
+</section>

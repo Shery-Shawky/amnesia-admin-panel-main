@@ -1,0 +1,102 @@
+/* material ui */
+.loading{
+    margin: 0 auto;
+}
+.mat-progress-spinner circle, .mat-spinner circle{
+    stroke: #F65B5F;
+}
+
+/* loading */
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #F65B5F;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+.lds-ellipsis[_ngcontent-gam-c50]{
+  display: block;
+  margin: 0 auto;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+/* CSS */
+#orders{
+    margin-top: 50px;
+}
+#orders h2{
+    color: #F65B5F;
+    margin-bottom: 30px;
+}
+/* #orders table tbody tr:nth-child(odd){
+    background-color: #f65b6046;
+} */
+#orders table thead{
+    background-color: #F65B5F;
+    color: #FFFFFF;
+    box-shadow: 5px 5px 5px #95959595;
+}
+#orders #viewDetails{
+    background-color: #FFFFFF;
+    outline: none;
+    border: 1px solid #F65B5F;
+    background-image: 
+      linear-gradient(to top, hsl(0, 0%, 100%) 50%, #F65B5F 50%),
+      linear-gradient(to top, #F65B5F 50%, transparent 50%);
+    -webkit-background-clip: text,padding-box;
+    background-clip: text,padding-box;
+    -webkit-text-fill-color: transparent;
+    background-size: 100% 200%;
+    background-position: top;
+    transition: background-position 0.5s ease-in-out;
+}
+#orders #viewDetails:hover{
+    background-position: bottom;
+}

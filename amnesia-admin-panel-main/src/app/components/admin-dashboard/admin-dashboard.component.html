@@ -1,0 +1,33 @@
+<section id="admin">
+    <div class="wrapper">
+        <nav id="sidebar">
+            <h1 class="dashboard-title pt-2 pl-2">
+                <span>Amnesia</span>
+            </h1>
+            <h2 class="dashboard-subtitle pt-2 pl-3">Dashboard</h2>
+            <ul class="list-unstyled components">
+                <!-- <p><i class="fas fa-tachometer-alt"></i> Dashboard</p> -->
+                <p><i class="fas fa-users"></i> Users</p>
+                <li (click)="onClick('dashboard/users')">All Users</li>
+                <p><i class="fas fa-shopping-cart"></i> Orders</p>
+                <li (click)="onClick('dashboard/orders')">Orders</li>
+                <p><i class="fas fa-store"></i> Products</p>
+                <li (click)="onClick('dashboard/products')">All Products</li>
+                <p><i class="fas fa-cog"></i> Settings</p>
+                <li (click)="logout()">Logout</li>
+            </ul>
+        </nav>
+        <div id="content">
+            <button type="button" id="sidebarCollapse" class="navbar-btn" (click)="toggle()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div id="cont">
+                <h1 class="main-title text-danger" style="text-decoration: underline;">Dashboard</h1>
+                <hr>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</section>

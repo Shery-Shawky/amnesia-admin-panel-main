@@ -1,0 +1,155 @@
+#admin{
+    background-image: radial-gradient(#d8d7d72c 20%, transparent 20%);
+    background-size: 30px 30px;
+}
+#admin .row{
+    justify-content: center;
+}
+.dashboard-title span{
+    font-family: 'Berkshire Swash', cursive;
+    color: whitesmoke;
+    font-size: 2rem;
+}
+.dashboard-subtitle{
+    color: whitesmoke;
+    text-decoration: underline;
+}
+#sidebarCollapse {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: #f0f8ff00;
+}
+#sidebarCollapse span {
+    width: 80%;
+    height: 2px;
+    margin: 0 auto;
+    display: block;
+    background: #555;
+    background-color: #F65B5F;
+    transition: all 0.8s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+}
+
+#sidebarCollapse span:first-of-type {
+    /* rotate first one */
+    transform: rotate(45deg) translate(2px, 2px);
+}
+#sidebarCollapse span:nth-of-type(2) {
+    /* second one is not visible */
+    opacity: 0;
+}
+#sidebarCollapse span:last-of-type {
+    /* rotate third one */
+    transform: rotate(-45deg) translate(1px, -1px);
+}
+
+#sidebarCollapse.active span {
+    /* no rotation */
+    transform: none;
+    /* all bars are visible */
+    opacity: 1;
+    margin: 5px auto;
+}
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+    perspective: 1500px; 
+}
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+    background-color: #E7E7E7;
+    background-image: linear-gradient(to left, #fda8a8, #f65b60);
+    color: #5d5d5d25;
+    transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
+    transform-origin: center left; /* Set the transformed position of sidebar to center left side. */
+}
+#sidebar.active {
+    margin-left: -250px;
+    transform: rotateY(100deg); /* Rotate sidebar vertically by 100 degrees. */
+}
+#admin a{
+    color: #5D5D5D;
+}
+#admin a:hover{
+    text-decoration: none;
+}
+#admin p{
+    color: whitesmoke;
+    font-weight: bold;
+}
+#admin ul{
+    list-style: none;
+    margin-top: 30px;
+    padding-left: 0px;
+    color: whitesmoke;
+    width: 100%;
+    text-indent: 20px;
+}
+#admin li{
+    padding: 5px;
+    margin-bottom: 10px;
+    text-indent: 70px;
+}
+#admin ul .active{
+    border-right: 3px solid #F65B5F;
+    background-color: rgba(240, 248, 255, 0.829);
+    color: #F65B5F;
+}
+#admin li:hover{
+    cursor: pointer;
+    /* text-indent: 50px;
+    color: whitesmoke; */
+    transition: ease-in-out .4s;
+    border-right: 3px solid #F65B5F;
+    background-color: rgba(240, 248, 255, 0.829);
+    color: #F65B5F;
+}
+#admin #cont{
+    margin: 10px;
+    padding: 10px;
+    min-height: 100vh;
+    min-width: 77vw;
+    border-radius: 15px;
+    /* background-color: teal; */
+}
+/* media query */
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+        transform: rotateY(100deg);
+    }
+    #sidebar.active {
+        margin-left: 0;
+        transform: none;
+    }
+    #sidebarCollapse span:first-of-type,
+    #sidebarCollapse span:nth-of-type(2),
+    #sidebarCollapse span:last-of-type {
+        transform: none;
+        opacity: 1;
+        margin: 5px auto;
+    }
+    /* Removing the vertical margin and make the first and last bars rotate again when the sidebar is open, hiding the second bar */
+    #sidebarCollapse.active span {
+        margin: 0 auto;
+    }
+    #sidebarCollapse.active span:first-of-type {
+        transform: rotate(45deg) translate(2px, 2px);
+    }
+    #sidebarCollapse.active span:nth-of-type(2) {
+        opacity: 0;
+    }
+    #sidebarCollapse.active span:last-of-type {
+        transform: rotate(-45deg) translate(1px, -1px);
+    }
+}
+
+
+
+#adminOrders,
+#adminProducts{
+    display: none;
+}
